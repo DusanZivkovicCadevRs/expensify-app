@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { NavLink, Link, BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import './styles/styles.scss';
 import 'normalize.css/normalize.css';
@@ -12,42 +12,54 @@ const ExpenseDashboardpage = () => (
 );
 
 
-const expensestuff = () => (
+const CreateExpensePage = () => (
     <div>
-        This is f
+        Create expense
     </div>
 );
 
 
-const help = () => (
+const HelpPage = () => (
     <div>
-    Help page
+        Help page
     </div>
 );
 
 
 const NotFoundPage = () => (
     <div>
-    Error 404: Not found page
+        Error 404: Not found page - <Link to='/'>Go home</Link>
     </div>
 );
 
+const Header = () => (
+    <header>
+        <h1>Expensify</h1>
+        <NavLink to='/' activeClassName='is-active' exact={true}>Home</NavLink>
+        <NavLink to='/create' activeClassName='is-active'>Create</NavLink>
+        <NavLink to='/edit' activeClassName='is-active'>Edit</NavLink>
+        <NavLink to='/help' activeClassName='is-active'>Help</NavLink>
+    </header>
+);
 
-const edit = () => (
+const EditPage = () => (
     <div>
-    edit page
+        edit page
     </div>
 );
 
 const routes = (
     <BrowserRouter>
-        <Switch>
-            <Route path='/' component={ExpenseDashboardpage} exact={true}/>
-            <Route path='/create' component={expensestuff} />
-            <Route path='/edit' component={edit} />
-            <Route path='/help' component={help} />
-            <Route component={NotFoundPage} />
-        </Switch>
+        <div>
+            <Header />
+            <Switch>
+                <Route path='/' component={ExpenseDashboardpage} exact={true} />
+                <Route path='/create' component={CreateExpensePage} />
+                <Route path='/edit' component={EditPage} />
+                <Route path='/help' component={HelpPage} />
+                <Route component={NotFoundPage} />
+            </Switch>
+        </div>
     </BrowserRouter>
 );
 
