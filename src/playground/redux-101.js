@@ -1,35 +1,52 @@
 import { createStore } from 'redux';
 
 const store = createStore((state = { count: 0 }, action) => {
-    console.log('Running store.');
     switch (action.type) {
-        case 'RESET': 
+        case 'RESET':
             return {
                 count: 0
             };
-         case 'INCREMENT': 
+
+        case 'SET':
             return {
-                count: state.count + 1
+                count: action.count
             };
-         case 'DECREMENT': 
+
+
+        case 'INCREMENT':
+            const incrementBy = typeof action.incrementBy === 'number' ? action.incrementBy : 1;
             return {
-                count: state.count - 1
+                count: state.count + incrementBy
             };
+
+        case 'DECREMENT':
+            const decrementBy = typeof action.decrementBy === 'number' ? action.decrementBy : 1;
+            return {
+                count: state.count - decrementBy
+            };
+
         default:
             return state;
     }
 });
 
-console.log(store.getState());
+const unsubscribe = store.subscribe(() => {
+    console.log(store.getState());
+})
 
 // Actions - an obj that gets sent to the store
 store.dispatch({
-    type: 'INCREMENT'
+    type: 'INCREMENT',
+    incrementBy: 5
 });
 
+
 store.dispatch({
-    type: 'DECREMENT'
+    type: 'DECREMENT',
+    decrementBy: 5
 });
+
+// unsubscribe();
 
 store.dispatch({
     type: 'RESET'
@@ -39,5 +56,7 @@ store.dispatch({
     type: 'DECREMENT'
 });
 
-
-console.log(store.getState());
+store.dispatch({
+    type: 'SET',
+    count: 101
+});
