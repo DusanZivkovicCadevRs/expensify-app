@@ -1,8 +1,9 @@
 import React from 'react';
 
 const PortfolioExact= (props) => (
+    
     <div>
-        This is about {props.match.params.id}
+        <p>This is about {props.match.params.id}</p>
     </div>
 );
 

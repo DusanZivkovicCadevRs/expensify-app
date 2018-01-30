@@ -7,8 +7,8 @@ const Portfolio = (props) => {
     return (
         <div>
             <h1>Portfolio page</h1>
-            <NavLink to='/portfolio/1' activeClassName='is-active--portfolio'>Go to thing ONE</NavLink>
-            <NavLink to='/portfolio/2' activeClassName='is-active--portfolio'>Go to thing TWO</NavLink>
+            <NavLink to='/portfolio/1' activeClassName='is-active'>Go to thing ONE</NavLink>
+            <NavLink to='/portfolio/2' activeClassName='is-active'>Go to thing TWO</NavLink>
             <Route path='/portfolio/:id' component={PortfolioExact} />
         </div>
     )
