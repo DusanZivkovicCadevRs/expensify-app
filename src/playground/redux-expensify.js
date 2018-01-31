@@ -101,3 +101,14 @@ const demoState = {
         endDate: undefined
     }
 };
+
+const user = {
+    name: 'Jen',
+    age: 24
+};
+
+console.log({
+    age: 33,
+    ...user,
+    location: 'Philadelphia',
+});
