@@ -19,7 +19,11 @@ store.dispatch(addExpense({ description: 'Gas bill', note: 'niiice', amount: 190
 store.dispatch(setTextFilter('bil'));
 // getVisibleExpense -> print visibles ones to screen
 const state = store.getState()
+<<<<<<< HEAD
 const visibleExpenses = getVisibleExpense(state.expenses, state.filters);
+=======
+const visibleExpenses = getVisibleExpense(state.expenses, state.filters)
+>>>>>>> bccb96ef8ff923921684c4a9d4dd11f97aa13840
 
 console.log(visibleExpenses);
 
