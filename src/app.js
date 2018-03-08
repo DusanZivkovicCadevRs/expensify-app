@@ -18,7 +18,7 @@ store.dispatch(addExpense({ description: 'Water bill', note: 'goood', amount: 11
 store.dispatch(addExpense({ description: 'Gas bill', note: 'niiice', amount: 19000, createdAt: 91550000 }));
 store.dispatch(addExpense({ description: 'Rent', note: 'goood', amount: 119000, createdAt: 11500000 }));
 // setTextFilter -> bill (2 items) -> water (1 item)
-store.dispatch(setTextFilter('bil'));
+// store.dispatch(setTextFilter('bil'));
 // getVisibleExpense -> print visibles ones to screen
 
 // setTimeout(() => {
