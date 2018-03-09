@@ -1,18 +1,17 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { removeExpense } from '../actions/expenses';
+import { Link } from 'react-router-dom';
 
 // Export a stateless functional component
 // description, amount, createdAt
 
-const ExpenseListItem = ({ dispatch, id, description, amount, createdAt }) => (
+const ExpenseListItem = ({ id, description, amount, createdAt }) => (
     <div>
-        <h1>{description}</h1>
+        <Link to={`/edit/${id}`} >
+            <h1>{description}</h1>
+        </Link>
         <p>{amount} - {createdAt}</p>
-        <button onClick={(e) => {
-            dispatch(removeExpense({ id }))
-        }}>Remove</button>
+
     </div>
 );
 
-export default connect()(ExpenseListItem);
+export default ExpenseListItem;
