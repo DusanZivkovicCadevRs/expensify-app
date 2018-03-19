@@ -3,23 +3,26 @@ import moment from 'moment';
 
 const expenses = [
     {
-        id: '1',
+        id: '0',
         description: 'Bill',
         note: '',
         amount: 169,
-        createdAt: 0
+        createdAt: 0,
+        endDate: moment(0).add(5, 'days').valueOf()
     }, {
-        id: '21',
+        id: '1',
         description: 'Rent',
         note: '',
         amount: 16900,
-        createdAt: -1110
+        createdAt: moment(0).subtract(4, 'days').valueOf(),
+        endDate: moment(0).add(5, 'days').valueOf()
     }, {
-        id: '31',
+        id: '2',
         description: 'Credit card',
         note: '',
         amount: 55555,
-        createdAt: 2000
+        createdAt: moment(0).add(4, 'days').valueOf(),
+        endDate: moment(0).add(5, 'days').valueOf()
     },
 ]
 
@@ -31,7 +34,7 @@ test('should filter by text value', () => {
         endtDate: undefined
     };
     const result = selectExpenses(expenses, filters);
-    expect(result).toEqual([ expenses[2], expenses[1]]);
+    expect(result).toEqual([expenses[2], expenses[1]]);
 });
 
 test('should filter by startDate', () => {
@@ -39,6 +42,44 @@ test('should filter by startDate', () => {
         text: '',
         sortBy: 'date',
         startDate: moment(0),
-        endtDate: undefined
-    }
+        endDate: undefined
+    };
+
+    const result = selectExpenses(expenses, filters);
+    expect(result).toEqual([expenses[2], expenses[0]]);
 });
+
+test('should filter by endDate', () => {
+    const filters = {
+        text: '',
+        sortBy: 'date',
+        endDate: moment(0).add(10, 'days')
+    };
+
+    const result = selectExpenses(expenses, filters);
+    expect(result).toEqual([expenses[2], expenses[0], expenses[1]]);
+});
+
+test('should filter by date', () => {
+    const filters = {
+        text: '',
+        sortBy: 'date',
+    };
+
+    const result = selectExpenses(expenses, filters);
+    expect(result).toEqual([expenses[2], expenses[0], expenses[1]]);
+
+});
+
+test('should filter by amount', () => {
+    const filters = {
+        text: '',
+        sortBy: 'amount',
+    };
+
+    const result = selectExpenses(expenses, filters);
+    expect(result).toEqual([expenses[2], expenses[1], expenses[0]]);
+
+});
+
+
