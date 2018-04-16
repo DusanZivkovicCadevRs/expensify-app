@@ -8,7 +8,7 @@ const expenses = [
         note: '',
         amount: 169,
         createdAt: 0,
-        endDate: moment(0).add(5, 'days').valueOf()
+        endDate: moment(0).add(3, 'days').valueOf()
     }, {
         id: '1',
         description: 'Rent',
