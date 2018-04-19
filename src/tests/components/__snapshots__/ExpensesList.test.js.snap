@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render ExpensesList correctly 1`] = `
+exports[`should render ExpensesList with expenses 1`] = `
 <div>
   <h1>
     ExpenseList
@@ -32,5 +32,16 @@ exports[`should render ExpensesList correctly 1`] = `
     key="2"
     note=""
   />
+</div>
+`;
+
+exports[`should render ExpensesList without expenses 1`] = `
+<div>
+  <h1>
+    ExpenseList
+  </h1>
+  <p>
+    No expenses
+  </p>
 </div>
 `;
